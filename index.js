@@ -30,10 +30,29 @@ const todoSchema = new mongoose.Schema({
 const Todo = mongoose.model('Todo', todoSchema);
 
 // Function to Create Todo
-async function createTodo(){}
+async function createTodo(){
+    const payload = {
+        title: "Fun Guy Kawhi",
+        content: "Kawhi is a fun guy (fungi)!",
+        isComplete: false,
+    };
+    const newTodo = new Todo(payload);
+    // safeguard to prevent duplicate objects being created by title
+    const exists = await Todo.findOne({ title: payload.title });
+    if (exists) {
+        return
+    }
+    const result = await newTodo.save();
+    console.log(result);
+}
 
 // Function to get all Todos from the Database
-async function getTodos(){}
+async function getTodos(){
+    const result = await Todo.find({ content: /a/ });
+    console.log(result);
+    console.log(result.length);
+}
+
 
 // Function to get a Todo by its title 
 async function getTodoByTitle(){}
