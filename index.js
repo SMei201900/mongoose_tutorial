@@ -32,8 +32,8 @@ const Todo = mongoose.model('Todo', todoSchema);
 // Function to Create Todo
 async function createTodo(){
     const payload = {
-        title: "Fun Guy Kawhi",
-        content: "Kawhi is a fun guy (fungi)!",
+        title: "Leeroy Jet Gibbs",
+        content: "Corgi",
         isComplete: false,
     };
     const newTodo = new Todo(payload);
@@ -94,3 +94,5 @@ async function deleteTodoById(){}
 
 // Under this comment, call your functions to be able to execute them
 updateTodo();
+
+
