@@ -7,23 +7,12 @@ const mongoose = require("mongoose");
 // You will need to replace the databaseUrl with the URL of your MongoDB Cluster
 const databaseUrl = process.env.DB_URL;
 
-
-/*
 // This code will connect to your MongoDB cluster
 mongoose.connect(databaseUrl)
 // The .then() method prints out a message if you successfully connected to your MongoDB Cluster
 .then(() => console.log("Connected to MongoDB"))
 // If there is an error connecting to your cluster it will get printed to the console
 .catch((err) => console.error(err.message));
-*/
-
-mongoose.connect(databaseUrl)
-  .then(() => {
-    console.log("Connected to MongoDB");
-    return getTodos(); // dump all todos
-  })
-  .catch((err) => console.error(err.message));
-
 
 /**
  * Example of a MongoDB Table being structured
@@ -60,7 +49,7 @@ async function createTodo(){
 // Function to get all Todos from the Database
 async function getTodos(){
     const result = await Todo.find({ });
-    console.log("All Todos:", result);
+    console.log(result);
     console.log(result.length);
 }
 
