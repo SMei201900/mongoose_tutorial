@@ -84,15 +84,33 @@ async function updateTodo(){
 }
 
 // Function to update Todo by its id
-async function updateTodoById(){}
+async function updateTodoById(){
+    const todoId = ""; // replace with a valid id from YOUR TODOS table
+    const updatedPayload = { content: "Updated Todo Content by its _id" };
+    const newVersion =  { new: true };
+    const result = await Todo.findByIdAndUpdate(todoId, updatedPayload, newVersion);
+    console.log(result);
+}
+
 
 // Function to delete Todo by a complex query
-async function deleteTodo(){}
+async function deleteTodo(){
+    // mocking the creation of a new Todo to eventually be deleted
+    const newTodo = new Todo({
+        title: "Crazy Steveino",
+        content: "WHO CARES ITS GONNA GET REMOVED",
+        isComplete: true,
+    });
+    await newTodo.save();
+    // Delete the Todo by its title
+    const result = await Todo.deleteOne({ title: "Crazy Steveino" });
+    console.log(result);
+}
+
 
 // Function to delete Todo by its id
 async function deleteTodoById(){}
 
 // Under this comment, call your functions to be able to execute them
 updateTodo();
-
 
