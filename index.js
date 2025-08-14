@@ -53,15 +53,35 @@ async function getTodos(){
     console.log(result.length);
 }
 
-
 // Function to get a Todo by its title 
-async function getTodoByTitle(){}
+async function getTodoByTitle(){
+    const result = await Todo.findOne({ title: "Fun Guy Kawhi" });
+    if (result) {
+        console.log(result);
+        return;
+    }
+    console.log("404 Not Found");
+}
 
 // Function to get Todo by its id
-async function getTodoById(){}
+async function getTodoById(){
+    const id = "111111111111111111111111"; // replace with a valid id from YOUR TODOS table
+    const result = await Todo.findById(id);
+    if (result) {
+        console.log(result);
+        return;
+    }
+    console.log("404 Not Found");
+}
 
 // Function to update a Todo by a complex query
-async function updateTodo(){}
+async function updateTodo(){
+    const query = { title: "Fun Guy Kawhi" };
+    const updatedPayload = { isComplete: true };
+    const newVersion = { new: true };
+    const result = await Todo.findOneAndUpdate(query, updatedPayload, newVersion);
+    console.log(result);
+}
 
 // Function to update Todo by its id
 async function updateTodoById(){}
@@ -73,3 +93,4 @@ async function deleteTodo(){}
 async function deleteTodoById(){}
 
 // Under this comment, call your functions to be able to execute them
+updateTodo();
